@@ -12,6 +12,7 @@ All source code in the [Ruby on Rails Tutorial](http://railstutorial.org/)
 is available jointly under the MIT License and the Beerware License. See
 [LICENSE.md](LICENSE.md) for details.
 
+URL = https://immense-plateau-23815.herokuapp.com/
 ##getting started
 
 to get started clone the repo and then install the needed gems.....
