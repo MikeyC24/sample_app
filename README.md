@@ -19,11 +19,13 @@ to get started clone the repo and then install the needed gems.....
 bundle install --without production #(use a diff database forr testing sqlite3 then what heroku uses to work pg)....
 next migrate the data base....
 
-rails db:migrate
+rails db:migrate - bin/rails db:migrate RAILS_ENV=test 
 then run rails test.....
 then run local server, rails servers, to confirm it is working  
 
-
+also if getting a required bcrypt error, do 
+1. gem uninstall bcrypt 
+2. install again doing gem install bcrypt --platform=ruby
 
 
 
