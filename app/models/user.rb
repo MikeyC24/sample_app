@@ -24,10 +24,21 @@ class User < ApplicationRecord
     end
 
     # remember a user in the databse for use in persistent sessions.
-    def remeber
+    def remember
     	self.remember_token = User.new_token
     	update_attribute(:remember_digest, User.digest(remember_token))
     end
+
+    #match remmeber token to confirm user
+    def authenticated?(remember_token)
+        return false if remember_digest.nil?
+        BCrypt::Password.new(remember_digest).is_password?(remember_token)
+    end
     
+    #forget a user
+    def forget
+        update_attribute(:remember_digest, nil)
+    end
+
 end
 
