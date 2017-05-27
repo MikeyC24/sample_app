@@ -54,11 +54,6 @@ class User < ApplicationRecord
         UserMailer.account_activation(self).deliver_now
     end
 
-    # sends a password reset email
-    def send_password_reset_email
-        UserMailer.passwor_reset(self).deliver_now
-    end
-
     # sets the password reset attribution
     def create_reset_digest
         self.reset_token = User.new_token
@@ -66,6 +61,10 @@ class User < ApplicationRecord
         update_attribute(:reset_sent_at, Time.zone.now)
     end
 
+    # sends a password reset email
+    def send_password_reset_email
+        UserMailer.passwor_reset(self).deliver_now
+    end
 
     private
 
