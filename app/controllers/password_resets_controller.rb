@@ -1,4 +1,8 @@
 class PasswordResetsController < ApplicationController
+	before_action :get_user, only: [:edit, :update]
+	before_action :valid_user, only: [:edit, :update]
+	before_action :check_expiration, only: [:edit, :update] #expired password
+
   def new
   end
 
@@ -18,7 +22,28 @@ class PasswordResetsController < ApplicationController
   def edit
   end
 
+  def update
+  	if params[:user][:password].empty? #failed update due to empty password, explitily handled
+  		@user.errors.add(:password, "can't be empty")
+  		render 'edit'
+  	elsif @user.update_attributes(user_params) #successful update
+  		log_in @user
+  		#@user.update_attributes(:reset_digest, nil)
+  		flash[:success] = "Password has been reset"
+  		redirect_to @user
+  	else 
+  		render 'edit' #failed update due to invalid password
+  	end
+  end
+  		
+
   private
+
+  def user_params
+  	params.require(:user).permit(:password, :password_confirmation)
+  end
+
+  # before filters
 
   def get_user
   	@user = User.find_by(email: params[:email])
@@ -29,6 +54,13 @@ class PasswordResetsController < ApplicationController
   	unless (@user && @user.activated? && 
   			@user.authenticated?(:reset, params[:id]))
   	redirect_to root_url
+  	end
+  end
+
+  def check_expiration
+  	if @user.password_reset_expired?
+  		flash[:danger] = "Password has expired"
+  		redirect_to new_password_reset_url
   	end
   end
 
