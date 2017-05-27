@@ -51,11 +51,14 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+Known errors and notes
 
 test and the update method for reset password.
-this line - #@user.update_attributes(:reset_digest, nil) is needed, 
+1. this line - #@user.update_attributes(:reset_digest, nil) is needed, 
 and chsould make app work but get figure out test to make it work, so 
 it is blanked for now
+
+2. when browser is made to git a half page, the top bar in black with sample app and options to write doesnt automatically rescale
 
 
 going from local to prodution with Puma for local use
