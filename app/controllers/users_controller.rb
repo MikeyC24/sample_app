@@ -56,7 +56,11 @@ private
   		params.require(:user).permit(:name, :email, :password, :password_confirmation)
   	end
 
+    #before filters
+
     #confirmed a logged-in user
+    #this is getting whited out bc it was added to base application class
+=begin
     def logged_in_user
       unless logged_in?
         store_location
@@ -64,6 +68,7 @@ private
         redirect_to login_url
       end
     end
+=end
   	
     #confirms correct user
     def correct_user
