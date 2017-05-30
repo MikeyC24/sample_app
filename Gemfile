@@ -37,6 +37,10 @@ gem 'jbuilder', '~> 2.5'
  gem 'faker'
  gem 'will_paginate'
  gem 'bootstrap-will_paginate'
+ #mini_magick will not work on windows, come back to this on linux
+ #gem 'carrierwave',
+ #gem 'mini_magick', 
+ #gem 'fog',
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

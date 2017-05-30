@@ -60,6 +60,8 @@ it is blanked for now
 
 2. when browser is made to git a half page, the top bar in black with sample app and options to write doesnt automatically rescale
 
+3. image was not added as mini magick gem needs to be done on linux
+
 
 going from local to prodution with Puma for local use
 
