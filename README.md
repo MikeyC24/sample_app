@@ -62,6 +62,16 @@ it is blanked for now
 
 3. image was not added as mini magick gem needs to be done on linux
 
+4. the ajax is all commented out for test purposes, for productionmake these changes..
+	a. uncomment the files app/views/relationships/create.js.erb and
+		app/views/relationships/destroy.js.erb
+	b. uncomment in config app  config.action_view.embed_authenticity_token_in_remote_forms = true
+	c. uncomment in relationship controller 
+	d. add the remote trues in _follow and _unfollow
+	<%= form_for(current_user.active_relationships.find_by(followed_id: @user.id),
+		     html: { method: :delete },
+             remote: true) do |f| %>
+             <%= form_for(current_user.active_relationships.build, remote: true) do |f| %>
 
 going from local to prodution with Puma for local use
 
