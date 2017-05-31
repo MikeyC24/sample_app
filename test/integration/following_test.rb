@@ -16,9 +16,8 @@ class FollowingTest < ActionDispatch::IntegrationTest
 		end
 	end
 
-	#line 24 and 25 are failing
 	test "followers page" do
-		get following_user_path(@user)
+		get followers_user_path(@user)
 		assert_not @user.following.empty?
 		assert_match @user.followers.count.to_s, response.body
 		@user.followers.each do |user|
