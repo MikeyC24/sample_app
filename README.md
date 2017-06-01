@@ -62,7 +62,7 @@ it is blanked for now
 
 3. image was not added as mini magick gem needs to be done on linux
 
-4. the ajax is all commented out for test purposes, for productionmake these changes..
+4. the ajax is all commented out as an error prevented them from being tedted in test production, if needed or waanted to cahnge for productionmake these changes..
 	a. uncomment the files app/views/relationships/create.js.erb and
 		app/views/relationships/destroy.js.erb
 	b. uncomment in config app  config.action_view.embed_authenticity_token_in_remote_forms = true
